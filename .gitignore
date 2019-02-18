@@ -1,3 +1,4 @@
-local_settings.py
-media
+settings.py
+/media
 db.sqlite3
+/static
