@@ -77,14 +77,20 @@ WSGI_APPLICATION = 'EventTracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eventtracker',
-        'USER': 'postgres',
-        'PASSWORD': '@Riley5151',
-        'HOST': 'localhost',
-        'PORT': 5434
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'events',
+#         'USER': 'postgres',
+#         'PASSWORD': '@Riley5151',
+#         'HOST': 'localhost',
+#         'PORT': 5438
+#     }
+# }
 
 
 # Password validation

@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h3>{{ object }}</h3>
+  <h5>{{ object.start_date }}</h5>
+  <h5>{{ object.location }}</h5>
+  <h5>TE Lead- {{ object.te_lead }}</h5>
+  <h5>Priority Level- {{ object.priority_level }}</h5>
+  <h5>{{ object.previous_number_registered }} Attendees at previous conference</h5>
+  <h5> Raised: ${{ object.revenue_raised }}</h5>
+  <h5> Out of our goal: ${{ object.revenue_goal }}</h5>
+
+</div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Completed?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Link Created</th>
+          <td>{{ object.sponsor_link_created }}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">Prospectus Approved and Compelted</th>
+          <td>{{ object.prospectus_completed }}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">O.C. Call</th>
+          <td>{{ object.oc_call_completed }}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">O.C. Outreach</th>
+          <td>{{ object.indsutrial_oc_outreach_completed }}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">Contacted Previous Sponsors and Exhibitors</th>
+          <td>{{ object.all_previous_sponsors_contacted }}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">Contacted Invited Speakers</th>
+          {% if object.get_invited_speakers %}
+          <td>True</td>
+          {% else %}
+          <td>False</td>
+          {% endif %}
+        </tr>
+      </tbody>
+    </table>
+
+    {% for speaker in object.get_invited_speakers %}
+    <li>{{ speaker }}</li>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

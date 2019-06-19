@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  {% if object_list %}
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Conference</th>
+          <th scope="col">TE Lead</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Previous Number Registerd</th>
+          <th scope="col">Revenue Raised</th>
+          <th scope="col">Revenue Goal</th>
+          <th scope="col">Sponsor Link Created?</th>
+          <th scope="col">OC Call Completed?</th>
+          <th scope="col">Prospectus Completed?</th>
+          <th scope="col">Indsutrial OC Outreach Completed?</th>
+          <th scope="col">Previous Sponsors Contacted?</th>
+          <th scope="col">Speaker List</th>
+        </tr>
+      </thead>
+      {% for conference in object_list %}
+      <tbody>
+        <tr>
+          <th scope="row">
+            <a href="/{{ conference.pk }}/">{{ conference.title }}</a>
+          </th>
+          <td>{{ conference.te_lead }}</td>
+          <td>{{ conference.priority_level }}</td>
+          <td>{{ conference.previous_number_registered }}</td>
+          <td>{{ conference.revenue_raised }}</td>
+          <td>{{ conference.revenue_goal }}</td>
+          <td class="{{ conference.sponsor_link_created }}">
+            {{ conference.sponsor_link_created }}
+          </td>
+          <td>{{ conference.oc_call_completed }}</td>
+          <td>{{ conference.prospectus_completed }}</td>
+          <td>{{ conference.indsutrial_oc_outreach_completed }}</td>
+          <td>{{ conference.all_previous_sponsors_contacted }}</td>
+          <td>{{ conference.get_invited_speakers }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}
+  <h1>No Events Listed</h1>
+  {% endif %}
+</div>
+{% endblock %}
